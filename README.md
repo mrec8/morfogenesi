@@ -1,5 +1,7 @@
 # Morfogènesi
 
+**[Veure la peça en directe →](https://mrec8.github.io/morfogenesi/)**
+
 Peça audiovisual interactiva que acompanya el TFG _Sensibilitat i intel·ligència_ (Martí Recalde Tarrón, Filosofia UB, curs 2025–2026).
 
 La peça és una simulació en temps real de **Gray-Scott reaction-diffusion** sobre la GPU, amb interacció via cursor i una capa de memòria local que modula els paràmetres físics del medi. No representa cap organisme particular — mostra la classe de matemàtica de la qual els organismes estan fets.
