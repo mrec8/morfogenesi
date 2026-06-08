@@ -1,4 +1,4 @@
-# Susceptibilitat
+# Morfogènesi
 
 Peça audiovisual interactiva que acompanya el TFG _Sensibilitat i intel·ligència_ (Martí Recalde Tarrón, Filosofia UB, curs 2025–2026).
 
