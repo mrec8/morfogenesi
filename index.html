@@ -22,47 +22,90 @@
     <div id="pieza" class="pieza-container"></div>
 
     <article class="text">
-      <h2>El que mires</h2>
+      <h2>Què estàs mirant</h2>
 
       <p>
-        Davant teu hi ha un medi continu — pensa en una pel·lícula prima
-        de gel sobre una placa de microscopi — habitat per dues
-        substàncies químiques imaginàries. Les anomenarem <em>U</em> i
-        <em>V</em>. Es difonen i reaccionen entre elles. Cada punt del
-        medi té, a cada instant, una concentració de cadascuna. Allò
-        que veus més fosc és, simplement, una zona on V predomina sobre
-        U.
+        Davant teu hi ha un medi continu - pots imaginar-lo com una fina
+        pel·lícula de gel sobre una placa de microscopi - ocupat per dues
+        substàncies quíimiques imaginàries. Les anomenarem <em>U</em> i
+        <em>V</em>. Es difonen i reaccionen entre sí. Cada punt del medi té,
+        a cada instant, un determinat nivell de concentració per cadascuna.
+        Els punts més foscos són aquells on la concentració de V és més gran
+        que la d'U (V <em>predomina</em> sobre U).
       </p>
 
       <p>
-        Tu pots tocar. Quan cliques o arrossegues el cursor sobre el
-        medi hi vesses una mica més de V. És com una pipeta dipositant
-        reactiu sobre el cultiu. La química local s'altera i des d'allà
-        comencen a néixer estructures.
+        Si vols, pots tocar aques petit experiment. Quan cliques o arrossegues
+        el cursor sobre el medi hi diposites una mica més de V. Com si operessis
+        una petita pipeta deixant caure reactiu sobre el cultiu. Això altera la 
+        química local i les reaccions derivades generen estructures o modifiquen
+        les que ja hi havia.
       </p>
 
       <p>
-        El que veus apareixent no està dibuixat. És la conseqüència
-        local d'una sola regla que governa tot el medi, aplicada
-        ressonadorament a cada punt i en cada instant. La regla és
-        senzilla. La complexitat que en surt és tota seva.
+        Les figures que apareixen davant teu no estan dibuixades. Son
+        la conseqüència local d'una sola norma que governa tot el medi,
+        aplicada simultàniament a cada punt i cada instant. La regla és 
+        simple. La complexitat que se'n deriva resulta sorprenent.
       </p>
 
-      <h3>La matemàtica</h3>
+      <h3>Una mica de matemàtica</h3>
 
       <p>
-        El model es diu <em>Gray-Scott</em>, descobert el 1983 com una
-        simplificació d'una reacció química real. Són dues equacions
-        diferencials parcials:
+        Aquest model matemàtic es diu <em>Gray-Scott</em>. Es va descobrir 
+        l'any 1983 com a simplificació d'una reacció química
+        real. Es tracta de dues equacions diferenciales en derivades
+        parcials.
       </p>
 
       <pre class="eq">
-∂U/∂t = D<sub>u</sub>·∇²U − U·V² + F·(1 − U)
-∂V/∂t = D<sub>v</sub>·∇²V + U·V² − (F + k)·V</pre>
+∂U/∂t = D<sub>U</sub>·∇²U − U·V² + F·(1 − U)
+∂V/∂t = D<sub>V</sub>·∇²V + U·V² − (F + k)·V</pre>
 
       <p>
-        L'estructura és la mateixa a cada substància. Tres coses li
-        passen alhora.
+        S'han de llegir com una descripció de com cambia, per cada punt del pla,
+        la concentració de cada substància a mesura que el temps avança.
+        La part esquerra de les equacions — <em>∂U/∂t</em> i
+        <em>∂V/∂t</em> — vol dir, senzillament, «el que canvia
+        la concentració d'U (o de V) en aquest punt en un instant
+        de temps molt curt, molt petit. El que està a la dreta de 
+        la igualtat ens diu de què depèn aquest canvi.
+      </p>
+
+      <p>Els símbols que apareixen tenen significats concrets:</p>
+
+      <ul>
+        <li>
+          <em>U</em> i <em>V</em> son les concetracions
+          d'ambdues substànies al punt en qüestió, en l'instant actual.
+        </li>
+        <li>
+          <em>∇²U</em> (llegit «laplacià d'U») és una mesura de
+          com de diferent és U en aquest punt respecte de la mesura
+          d'aquesta mateixa substància en els punts veïns. És 
+          l'ingredient matemàtic que modela la di <em>difusió</em>:
+          la tendència a igualar-se entre punts propers.
+        </li>
+        <li>
+          <em>D<sub>U</sub></em> i <em>D<sub>V</sub></em> són les
+          <em>velocitats de difusió</em> de cada substància. Com
+          més ràpid s'«escampa» U respecte de V, més assimètrica és
+          la dinàmica. Aquesta assimetria és, com veurem de seguida,
+          l'orígen de l'estructura visible.
+        </li>
+        <li>
+          <em>F</em> és la <em>tasa d'alimentació</em> («feed» en
+          la literatura): el ritme al qual el medi aporta U nova,
+          per compnesar la que es va consumint.
+        </li>
+        <li>
+          <em>k</em> és la <em>tasa d'eliminació</em> («kill»):
+          el ritme al qual V es degrada i desapareix del medi.
+        </li>
+      </ul>
+      
+      <p>
+        Molt bé però, aleshores, què li passa a cada substància? Doncs bé, a cada instant:
       </p>
 
       <p>
@@ -78,106 +121,110 @@
         segons una reacció autocatalítica: U + 2V → 3V. Cada cop que
         es troben dues molècules de V amb una de U, aquesta U es
         converteix en V (el terme <em>U·V²</em>). Com més V hi ha, més
-        V apareix — fins a esgotar la U disponible.
+        V apareix — fins a esgotar la U disponible. D'aquí la necessitat
+        d'afegir U de mica en mica i eliminar V.
       </p>
 
       <p>
-        Tercer, <em>es regenera i es perd</em>. U s'aboca al medi a
-        ritme constant F per substituir la que es va consumint; V es
-        degrada a ritme F + k. Aquestes dues constants — <em>feed</em>
-        i <em>kill</em>, en l'argot — controlen el caràcter del patró
-        final.
+        I tercer, <em>es renova i es perd</em>. U s'aboca al medi
+        a ritme constant F per substituir la que es va consumint;
+        V es degrada a ritme F + k. Aquestes dues constants —
+        el <em>feed</em> i el <em>kill</em> que ja hem definit
+        abans — controlen, juntes, el caràcter final del patró.
       </p>
 
       <p>
-        L'estranyesa està en el resultat. Difusió més reacció haurien
-        d'igualar i estabilitzar; en canvi, formen ratlles, taques,
-        espirals, xarxes, fronts pulsants. La forma neix de la
-        retroalimentació entre dues velocitats de difusió diferents:
-        U difon més ràpid que V, i d'aquesta asimetria emergeix
-        estructura on no n'hi havia.
+        L'estranyesa està en el resultat. Difusió més reacció
+        s'esperaria que igualessin i estabilitzessin el medi. I,
+        tanmateix, el que apareix són ratlles, taques, espirals,
+        xarxes, fronts pulsants. La forma neix de la
+        retroalimentació entre dues velocitats de difusió
+        diferents: U es difon més ràpidament que V, i d'aquesta
+        asimetria emergeix estructura on no n'hi havia.
       </p>
 
-      <h3>Turing, la morfogènesi</h3>
+      <h3>La morfogènesis</h3>
 
       <p>
-        És aquí on entra <em>Alan Turing</em>. L'any 1952, dos anys
-        abans de morir, va publicar un article titulat
-        <em>The Chemical Basis of Morphogenesis</em> que ningú no
-        llegia. La pregunta que volia respondre era una de les més
-        antigues de la biologia: si un embrió comença com una pilota
-        de cèl·lules idèntiques, com és que en surten dits, ulls,
-        ratlles, espirals?
-      </p>
-
-      <p>
-        Turing va demostrar matemàticament que <em>no cal cap pla</em>.
-        Dues substàncies que es difonen a velocitats diferents i es
-        regulen mútuament poden, soles, trencar l'homogeneïtat inicial
-        i produir patrons espacials estables. El qui difon ràpid se
-        n'allunya més; el qui difon lent es queda; on coincideixen, el
-        sistema fa estructura.
+        <em>Alan Turing</em> al 1952, dos anys abans de 
+        morir, va publicar un article titulat <em>The Chemical Basis
+        of Morphogenesis</em> que, en el seu moment, ningú va llegir.
+        La pregunta que volia respondre era una de les més antigues de
+        la biologia: si un embrió comença sent una esfera de cèl·lules
+        idèntiques, com pot ser que surtin d'allà dits, ulls mans o
+        espines si cada cèl·lula té exactament el mateix ADN?
       </p>
 
       <p>
-        Gray-Scott és un membre particular d'aquesta família — la
-        <em>inestabilitat de Turing</em> — i la teva pantalla en mostra
-        un exemple en directe. La forma no està escrita enlloc. No
-        l'està generant cap programa-figura. Emergeix com a
-        conseqüència local del balanç entre dues velocitats de difusió
-        i dos coeficients de reacció.
+        Turing va demostrar matemàticament que <em>no cal cap pla predefinit</em>
+        perquè això succeixi. Dues substàncies que es difonen a velocitats
+        diferents i que es regulen mutuament poden, soles, trancar la 
+        homogeneitat inicial i produir patrons espacials estables.
+        La de difusió ràpida s'allunya més mentre que la de difusió lenta roman. 
+        On coincideixin el sistema fabrica estructures geomètriques com les observades
+      </p>
+
+      <p>
+        El model Gray-Scott és un membre particular d'aquesta familia
+        - anomenada <em>inestabilitat de Turing</em> - i el que la pantalla 
+        mostra n'és un exemple en directe. La forma particular que pren
+        no està escrita enlloc. Emergeix com a conseqüència local de
+        l'equilibri entre les dues velocitats de difusió i els dos
+        coeficients de reacció.
       </p>
 
       <h3>La inspiració biològica</h3>
 
       <p>
-        Les taques d'un guepard. Les ratlles d'una zebra. Els cercles
-        de les ales d'una papallona. Les espirals d'un caragol. Els
-        septes d'un corall. La distribució de les fol·lícules piloses
-        en l'embrió d'un pollastre. Els patrons de pigmentació de les
-        conques marines. Les estries d'un peix tropical.
+        Les taques d'un guepard. Les ratlles d'una zebra. Els
+        cercles a les ales d'una papallona. Les espirals d'un
+        cargol. Els septes d'un corall. La distribució dels
+        fol·licles pilosos a l'embrió d'un pollastre. Els patrons
+        de pigmentació de les petxines marines. Les estries d'un
+        peix tropical.
       </p>
 
       <p>
         Cada cop que algú ha mirat amb cura un d'aquests sistemes,
-        hi ha trobat alguna versió d'aquesta matemàtica: dues (o més)
-        substàncies que es difonen a velocitats diferents i es regulen
-        mútuament. No vol dir que la natura "calculi Gray-Scott". Vol
-        dir que aquesta classe d'equacions captura una <em>estructura
-        formal</em> que la natura troba un cop i un altre.
+        hi ha trobat alguna versió d'aquesta matemàtica: dues (o
+        més) substàncies que es difonen a velocitats diferents i
+        es regulen mútuament. No vol dir que la natura «calculi
+        Gray-Scott». Vol dir que aquesta classe d'equacions
+        captura una <em>estructura formal</em> que la natura troba
+        una i una altra vegada.
       </p>
 
       <p>
         Els ingredients són mínims i les condicions són banals.
         Qualsevol medi continu amb dos agents que es regulin
         mútuament i es difonin a velocitats diferents pot caure en
-        règim de Turing. És més fàcil que la natura hi caigui que no
-        que se n'esquivi. I el resultat és que els patrons que
-        reconeixes com a vius — la pell del peix, l'espiral de la
-        flor, el mapa cromàtic de l'ala — són sovint, en el fons,
-        patrons de reacció-difusió.
+        règim de Turing. És més fàcil que la natura hi caigui que
+        no pas que se n'esquivi. I el resultat és que els patrons
+        que reconeixes com a vius — la pell del peix, l'espiral de
+        la flor, el mapa cromàtic de l'ala — són sovint, en el
+        fons, patrons de reacció-difusió.
       </p>
 
       <p>
-        En aquesta peça no estem representant cap organisme concret.
+        En aquesta peça no representem cap organisme concret.
         Estem mirant el <em>tipus de matemàtica</em> del qual els
-        organismes — i la varietat de formes que aquests presenten —
+        organismes — i la varietat de formes que presenten —
         estan fets.
       </p>
 
       <h3>El viatge dels paràmetres</h3>
 
       <p>
-        A la cantonada inferior esquerra hi ha un panell petit. Els
-        seus eixos són <em>F</em> i <em>k</em>, els dos paràmetres
-        clau de Gray-Scott. El punt és on som ara. La traça és el
-        camí que hem fet recentment.
+        A la cantonada inferior esquerra hi ha un petit panell.
+        Els seus eixos són <em>F</em> i <em>k</em>, els dos
+        paràmetres clau de Gray-Scott. El punt és on som ara. La
+        traça és el camí que hem recorregut recentment.
       </p>
 
       <p>
-        L'any 1993, John Pearson va catalogar el "zoo" de patrons que
-        Gray-Scott produeix segons aquests dos paràmetres. Va trobar
-        tot un atles, sovint anomenat <em>Pearson space</em>:
+        L'any 1993, John Pearson va catalogar el «zoo» de patrons
+        que Gray-Scott produeix segons aquests dos paràmetres. Va
+        trobar tot un atles, sovint anomenat <em>Pearson space</em>:
       </p>
 
       <ul>
@@ -187,7 +234,7 @@
         </li>
         <li>
           A la zona central: <em>solitons</em> — bombolles que es
-          desplacen pel medi com criatures petites.
+          desplacen pel medi com petites criatures.
         </li>
         <li>
           Amb F mitjana: <em>coralls</em> — xarxes ramificades que
@@ -202,147 +249,94 @@
       <p>
         La peça que mires no es queda fixa en cap d'aquests règims.
         F i k oscil·len amb freqüències incommensurables, fent un
-        viatge cuasi-periòdic per aquesta cartografia. Si la deixes
-        posada cinc minuts veuràs el medi travessar diversos
-        d'aquests règims. Un patró et naixerà davant, el seguirà un
-        altre, el contradirà un tercer. El petit punt al panell anirà
-        marcant el lloc.
+        viatge quasi-periòdic per aquesta cartografia. Si la
+        deixes posada cinc minuts veuràs el medi travessar diversos
+        d'aquests règims. Un patró et naixerà davant, el seguirà
+        un altre, el contradirà un tercer. El petit punt al
+        panell n'anirà marcant el lloc.
       </p>
 
-      <h3>La memòria del medi</h3>
+
+      <h3>Una reflexió</h3>
 
       <p>
-        Hi ha una capa addicional, més subtil. Cada punt del medi
-        recorda quanta perturbació ha rebut recentment.
-      </p>
-
-      <p>
-        Quan toques insistentment una mateixa zona, una variable
-        local — l'anomenem <em>saturació</em> — s'hi acumula. I
-        aquesta saturació modula els paràmetres físics del lloc: F i
-        k s'inclinen cap a una regió on el patró deixa de canviar.
-        La zona es congela. Si hi continues, ja no et respon: la pots
-        veure tornar-se freda i grisa.
-      </p>
-
-      <p>
-        Si la deixes en pau uns segons, la saturació decau. La
-        sensibilitat local es recupera. Pots tornar-hi i el medi
-        tornarà a respondre amb vivesa.
+        Aquesta senzilla producció audiovisual, fonamentada
+        en models matemàtics representats via codi, és un cas de 
+        <em>transferència de coneixement entre disciplines</em>.
+        Una matemàtica dissenyada en abstracte - un sistema d'equacions
+        diferencials amb dos substàncies i uns pocs paràmetres -
+        resulta capturar patrons que la biologia 
+        portava segles describint sense acabar d'entendre.
+        La química teòrica presta a la biologia un vocabulari per 
+        parlar de les ralles d'un peix. I a l'inrevés: la biologia
+        ofereix a la informàtica una manera d'organitzar el 
+        càlcul - resultant en aquesta peça, per exemple - que 
+        aquesta, per sí sola, no habria sabut trobar.
       </p>
 
       <p>
-        És un detall menor — un altre acord sobre la mateixa pintura
-        — però és el que fa que la peça no sigui només una
-        contemplació passiva. El que tu has fet en un lloc deixa una
-        empremta en la manera com aquell lloc pot ser-te significatiu
-        després.
-      </p>
-
-      <h3>Una nota personal</h3>
-
-      <p>
-        Aquesta peça acompanya un treball acadèmic que defensa una
-        idea estreta — que les nostres capacitats de sentir i de
-        pensar no són dues facultats separades, sinó dues cares de
-        la mateixa estructura processual. La peça no és una
-        il·lustració del treball. El treball és essencialment
-        conceptual i el medi de la peça és pràcticament purament
-        estètic. La relació entre tots dos és, intencionalment, més
-        obliqua.
+        Els casos d'aquesta mena no són excepcionals. Són d'allò
+        més comú. Una mateixa fórmula matemàtica reapareix en llocs
+        aparentment llunyans i serveix com a eina per disciplines que,
+        en gran mesura, no estan en diàleg. De la mateixa manera,
+        eines biològiques resulten claus per descobriments computacionals
+        (com el cas dels algorismes genètics) o certs patrons observats 
+        des de la sociologia serveixen per iluminar el comportament de gasos
+        en determinades circumstàncies.
+        La pregunta que casos com aquests provoca no és matemàtica, ni
+        biològica, ni informàtica. És <em>filosòfica</em>:
+        com és possible? Què fa que una equació inventada per una cosa 
+        descrigui, sense retoc, una altra tant distinta?
+        En quin sentit podem afirmar que les taques del guepard, la pantalla i el model
+        matemàtic abstracte estan relacionats?
       </p>
 
       <p>
-        Però el lector que hagi seguit fins aquí potser hi reconeix
-        una intuïció comuna. La forma que veus en pantalla no està
-        continguda enlloc. No hi ha un patró "real" del qual el que
-        veus en sigui una còpia. El patró és el resultat — local i
-        instantani — d'una història de relacions entre punts d'un
-        medi. I aquest medi té memòria: una memòria que modula com
-        respondrà a la trobada següent. Si això s'assembla a alguna
-        cosa del que el treball diu sobre els éssers vius, és perquè
-        aquesta classe de matemàtica i aquella altra de filosofia
-        descriuen, des de costats molt diferents, una estructura
-        comuna del món: la de coses que es fan en fer-se.
+        Les nocions amb què abordem preguntes així -
+        <em>estructura formal</em>, <em>analogia</em>,
+        <em>model</em>, <em>correspondència</em>,
+        <em>isomorfisme</em> — no pertanyen a cap de les 
+        disciplines que posen en relació. Pertanyen al discurs
+        filosòfic, que és tradicionalment l'encarregat de
+        parlar de la varietat de disciplines de coneixement humà
+        des de l'òptica d'aquesta pluralitat. Aquesta és una de les
+        funcions més antigues - i més necessàries - de la filosofia:
+        <em>navegar entre disciplines</em>. Atenre a com el contingut
+        d'una se n'allibera per arribar a una altra. Pensar com pot
+        ser que coses apreses dins un àmbit teòric clausurat puguin 
+        ser aplicades més enllà d'ell i per què de vegades funciona
+        i de vegades no.
       </p>
 
       <p>
-        Hi ha aquí, també, una qüestió més ampla. Les disciplines
-        que estudien la ment, la vida i el càlcul — psicologia,
-        biologia, informàtica — no estan separades pels seus
-        objectes en compartiments estancs. S'enriqueixen mútuament
-        prestant-se metàfores, models i preguntes. La informàtica
-        ha ofert a la psicobiologia una imatge poderosa per pensar
-        el sistema nerviós: la del processament d'informació. Tota
-        una neurociència cognitiva s'hi ha recolzat. Però el
-        préstec també va en l'altra direcció: una part important
-        de la informàtica contemporània s'inspira en allò que la
-        biologia ha trobat a la natura — xarxes neuronals,
-        algorismes genètics, simulacions de morfogènesi com la que
-        mires. La biologia presta a la informàtica idees per
-        estructurar el càlcul que ella sola no podria generar.
+        La filosofia no competeix amb les disciplines particulars:
+        no produeix els seus models ni qüestiona, en general, la
+        seva validesa interna. El que fa és proporcionar un lloc des
+        d'on el coneixement produït en distints àmbits pot ser
+        <em>integrat</em>. La conversa entre la matemàtica de Turing
+        i l'explicació matemàtica de la distribució de ralles de la zebra
+        és, ben mirada, una discusió que requereix de conceptes filosòfics. 
+        És així fins i tot quan el matemàtic i el biòleg no necessiten
+        saber-ho per tal que funcioni. Això val també per aquesta peça: 
+        la matemàtica i la biologia convergeixen aquí precisament sota
+        el ròtul d'expressions filosòfiques - 
+        «estructura formal», «patró», «morfogènesis»,
+        «emergència».
       </p>
 
       <p>
-        Aquesta peça és, modestament, un cas d'aquest préstec en
-        sentit invers al més familiar. En comptes de mirar la vida
-        com una computació, construïm un objecte computacional que
-        s'organitza seguint patrons propis del que és viu: difusió,
-        reacció, memòria local, retorn al repòs. La computació es
-        deixa habitar per la lògica de l'orgànic, en comptes que
-        sigui l'orgànic qui hagi de deixar-se reduir a la lògica de
-        la computació.
-      </p>
-
-      <p>
-        Cap dels dos préstecs és, per si sol, "veritable". Ni el
-        cervell és literalment un ordinador, ni Gray-Scott és
-        literalment un organisme. Cada un d'ells és, com a màxim,
-        un model útil per a quelcom. I és aquí on entra la
-        <em>filosofia</em>. La filosofia no és una disciplina més
-        al costat de les altres; no té un domini propi d'objectes.
-        La seva força és, precisament, la capacitat de mirar-se
-        totes les altres des de fora — examinar quines metàfores
-        operen, quina és la jurisdicció legítima de cadascuna, on
-        una disciplina ha sobreestès la seva propietat conceptual
-        sobre territoris d'una altra. La filosofia integra i,
-        alhora, jutja.
-      </p>
-
-      <p>
-        El treball que acompanya aquesta peça és un exercici
-        d'aquesta funció. Agafa el discurs del <em>funcionalisme
-        informàtic</em> — el qui vol explicar la sensibilitat com
-        a transducció més processament, defensat per Dennett i
-        companyia — i li pregunta si està realment legitimat per
-        pretendre tal cosa. La resposta del treball és que no:
-        l'analogia s'ha sobreestès més enllà del seu domini propi,
-        i una atenció més acurada al fenomen de la susceptibilitat
-        orgànica ho desfà.
-      </p>
-
-      <p>
-        Però aquesta crítica no és, en cap moment, una negació que
-        la informàtica i la psicobiologia puguin parlar-se. Al
-        contrari: és l'argument que la conversa ha de ser una
-        conversa real, no una colonització. I per això existeix
-        també el camí invers — el de la peça que estàs mirant. La
-        biologia, a través de la matemàtica de Turing i la seva
-        descendència, ofereix a la informàtica metàfores per
-        organitzar el càlcul d'una manera que aquesta no podia
-        generar des d'ella mateixa.
-      </p>
-
-      <p>
-        La filosofia, en aquest joc, té una posició petita però
-        important. No fabrica els models; no fa la feina dels
-        altres. Però des d'aquest lloc al centre, mira com s'envien
-        préstecs entre les disciplines i ajuda a distingir els
-        productius dels que han pres més del que tenien permès.
-        Sense aquesta vigilància, cada disciplina tendeix a
-        oblidar que les seves analogies són analogies, i comença a
-        prendre-les per descripcions literals del món. La feina de
-        la filosofia és precisament recordar-ho.
+        Si aquesta peça té alguna aspiració més enllà de la seva
+        estètica plaent, lleugerament hipnòtica, és aquesta:
+        mostrar concretament que hi ha llocs on la reflexió
+        filosòfica és <em>constitutiva</em>. No com a saber per
+        sobre dels altres, sinó com a lloc des d'on el
+        coneixement produït en altres àmbits es pot posar en
+        relació sense confondre's. Sense aquesta vigilància,
+        cada disciplina tendeix a oblidar que les seves
+        analogies són analogies, i a prendre-les per descripcions
+        literals del món. La filosofia és el que recorda aquesta
+        distinció i, sobretot, el que fa possible que les
+        disciplines segueixin parlant-se.
       </p>
     </article>
 
