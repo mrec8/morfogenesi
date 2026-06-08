@@ -1,0 +1,238 @@
+:root {
+  --paper: #f4f1e8;
+  --text: #1c1a17;
+  --text-muted: #6d645b;
+  --accent: #3a2a1a;
+  --line: #d8d2c3;
+  --max-width: 680px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: 'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header,
+footer,
+.text {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+header {
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem 0;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+}
+
+.pieza-container {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  height: 85vh;
+  min-height: 560px;
+  max-height: 900px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* Panel del Pearson space — insinuació de paràmetres. */
+.param-panel {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.92;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.param-canvas {
+  display: block;
+  width: 132px;
+  height: 132px;
+  border-radius: 2px;
+  box-shadow: 0 1px 8px rgba(40, 30, 20, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.param-label {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  color: rgba(58, 42, 26, 0.78);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  padding: 0 2px;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+.param-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.param-key {
+  font-family: 'EB Garamond', Garamond, Georgia, serif;
+  font-style: italic;
+  font-size: 0.78rem;
+  color: rgba(58, 42, 26, 0.65);
+}
+
+.param-val {
+  font-variant-numeric: tabular-nums;
+  color: rgba(40, 26, 16, 0.86);
+}
+
+@media (max-width: 720px) {
+  .param-panel {
+    bottom: 14px;
+    left: 14px;
+  }
+  .param-canvas {
+    width: 100px;
+    height: 100px;
+  }
+  .param-label {
+    font-size: 0.55rem;
+    gap: 10px;
+  }
+}
+
+.text {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+.text h2 {
+  font-size: 1.85rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.text h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 2.8rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.text p {
+  margin-bottom: 1.3rem;
+}
+
+.text em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.text pre.eq {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  background: rgba(58, 42, 26, 0.045);
+  border-left: 2px solid rgba(58, 42, 26, 0.35);
+  padding: 1rem 1.25rem;
+  margin: 1.6rem 0;
+  white-space: pre;
+  overflow-x: auto;
+  color: var(--accent);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.text pre.eq sub {
+  font-size: 0.78em;
+}
+
+.text ul {
+  margin: 1rem 0 1.6rem 0;
+  padding-left: 1.4rem;
+}
+
+.text li {
+  margin-bottom: 0.6rem;
+  list-style: none;
+  position: relative;
+}
+
+.text li::before {
+  content: '·';
+  position: absolute;
+  left: -1rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 17px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  header {
+    padding-top: 3rem;
+  }
+  .pieza-container {
+    height: 70vh;
+    min-height: 420px;
+  }
+}

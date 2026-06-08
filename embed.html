@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Susceptibilitat</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <style>
+      html,
+      body {
+        overflow: hidden;
+        height: 100vh;
+      }
+      .pieza-container {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pieza" class="pieza-container fullscreen"></div>
+
+    <script type="module">
+      import { mountSketch } from './src/sketch.js';
+      mountSketch('pieza');
+    </script>
+  </body>
+</html>

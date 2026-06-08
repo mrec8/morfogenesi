@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Susceptibilitat — un medi viu</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.165.0/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Susceptibilitat</h1>
+      <p class="subtitle">un medi viu i la seva memòria</p>
+    </header>
+
+    <div id="pieza" class="pieza-container"></div>
+
+    <article class="text">
+      <h2>El que mires</h2>
+
+      <p>
+        Davant teu hi ha un medi continu — pensa en una pel·lícula prima
+        de gel sobre una placa de microscopi — habitat per dues
+        substàncies químiques imaginàries. Les anomenarem <em>U</em> i
+        <em>V</em>. Es difonen i reaccionen entre elles. Cada punt del
+        medi té, a cada instant, una concentració de cadascuna. Allò
+        que veus més fosc és, simplement, una zona on V predomina sobre
+        U.
+      </p>
+
+      <p>
+        Tu pots tocar. Quan cliques o arrossegues el cursor sobre el
+        medi hi vesses una mica més de V. És com una pipeta dipositant
+        reactiu sobre el cultiu. La química local s'altera i des d'allà
+        comencen a néixer estructures.
+      </p>
+
+      <p>
+        El que veus apareixent no està dibuixat. És la conseqüència
+        local d'una sola regla que governa tot el medi, aplicada
+        ressonadorament a cada punt i en cada instant. La regla és
+        senzilla. La complexitat que en surt és tota seva.
+      </p>
+
+      <h3>La matemàtica</h3>
+
+      <p>
+        El model es diu <em>Gray-Scott</em>, descobert el 1983 com una
+        simplificació d'una reacció química real. Són dues equacions
+        diferencials parcials:
+      </p>
+
+      <pre class="eq">
+∂U/∂t = D<sub>u</sub>·∇²U − U·V² + F·(1 − U)
+∂V/∂t = D<sub>v</sub>·∇²V + U·V² − (F + k)·V</pre>
+
+      <p>
+        L'estructura és la mateixa a cada substància. Tres coses li
+        passen alhora.
+      </p>
+
+      <p>
+        Primer, <em>es difon</em> — el terme <em>∇²U</em> o
+        <em>∇²V</em>. Cada punt es promitja amb els seus veïns: si una
+        zona té més concentració, la regala als seus voltants; les
+        diferències s'erosionen amb el temps. Sola, la difusió ho
+        aplanaria tot.
+      </p>
+
+      <p>
+        Segon, <em>reacciona</em>. U i V es transformen mútuament
+        segons una reacció autocatalítica: U + 2V → 3V. Cada cop que
+        es troben dues molècules de V amb una de U, aquesta U es
+        converteix en V (el terme <em>U·V²</em>). Com més V hi ha, més
+        V apareix — fins a esgotar la U disponible.
+      </p>
+
+      <p>
+        Tercer, <em>es regenera i es perd</em>. U s'aboca al medi a
+        ritme constant F per substituir la que es va consumint; V es
+        degrada a ritme F + k. Aquestes dues constants — <em>feed</em>
+        i <em>kill</em>, en l'argot — controlen el caràcter del patró
+        final.
+      </p>
+
+      <p>
+        L'estranyesa està en el resultat. Difusió més reacció haurien
+        d'igualar i estabilitzar; en canvi, formen ratlles, taques,
+        espirals, xarxes, fronts pulsants. La forma neix de la
+        retroalimentació entre dues velocitats de difusió diferents:
+        U difon més ràpid que V, i d'aquesta asimetria emergeix
+        estructura on no n'hi havia.
+      </p>
+
+      <h3>Turing, la morfogènesi</h3>
+
+      <p>
+        És aquí on entra <em>Alan Turing</em>. L'any 1952, dos anys
+        abans de morir, va publicar un article titulat
+        <em>The Chemical Basis of Morphogenesis</em> que ningú no
+        llegia. La pregunta que volia respondre era una de les més
+        antigues de la biologia: si un embrió comença com una pilota
+        de cèl·lules idèntiques, com és que en surten dits, ulls,
+        ratlles, espirals?
+      </p>
+
+      <p>
+        Turing va demostrar matemàticament que <em>no cal cap pla</em>.
+        Dues substàncies que es difonen a velocitats diferents i es
+        regulen mútuament poden, soles, trencar l'homogeneïtat inicial
+        i produir patrons espacials estables. El qui difon ràpid se
+        n'allunya més; el qui difon lent es queda; on coincideixen, el
+        sistema fa estructura.
+      </p>
+
+      <p>
+        Gray-Scott és un membre particular d'aquesta família — la
+        <em>inestabilitat de Turing</em> — i la teva pantalla en mostra
+        un exemple en directe. La forma no està escrita enlloc. No
+        l'està generant cap programa-figura. Emergeix com a
+        conseqüència local del balanç entre dues velocitats de difusió
+        i dos coeficients de reacció.
+      </p>
+
+      <h3>La inspiració biològica</h3>
+
+      <p>
+        Les taques d'un guepard. Les ratlles d'una zebra. Els cercles
+        de les ales d'una papallona. Les espirals d'un caragol. Els
+        septes d'un corall. La distribució de les fol·lícules piloses
+        en l'embrió d'un pollastre. Els patrons de pigmentació de les
+        conques marines. Les estries d'un peix tropical.
+      </p>
+
+      <p>
+        Cada cop que algú ha mirat amb cura un d'aquests sistemes,
+        hi ha trobat alguna versió d'aquesta matemàtica: dues (o més)
+        substàncies que es difonen a velocitats diferents i es regulen
+        mútuament. No vol dir que la natura "calculi Gray-Scott". Vol
+        dir que aquesta classe d'equacions captura una <em>estructura
+        formal</em> que la natura troba un cop i un altre.
+      </p>
+
+      <p>
+        Els ingredients són mínims i les condicions són banals.
+        Qualsevol medi continu amb dos agents que es regulin
+        mútuament i es difonin a velocitats diferents pot caure en
+        règim de Turing. És més fàcil que la natura hi caigui que no
+        que se n'esquivi. I el resultat és que els patrons que
+        reconeixes com a vius — la pell del peix, l'espiral de la
+        flor, el mapa cromàtic de l'ala — són sovint, en el fons,
+        patrons de reacció-difusió.
+      </p>
+
+      <p>
+        En aquesta peça no estem representant cap organisme concret.
+        Estem mirant el <em>tipus de matemàtica</em> del qual els
+        organismes — i la varietat de formes que aquests presenten —
+        estan fets.
+      </p>
+
+      <h3>El viatge dels paràmetres</h3>
+
+      <p>
+        A la cantonada inferior esquerra hi ha un panell petit. Els
+        seus eixos són <em>F</em> i <em>k</em>, els dos paràmetres
+        clau de Gray-Scott. El punt és on som ara. La traça és el
+        camí que hem fet recentment.
+      </p>
+
+      <p>
+        L'any 1993, John Pearson va catalogar el "zoo" de patrons que
+        Gray-Scott produeix segons aquests dos paràmetres. Va trobar
+        tot un atles, sovint anomenat <em>Pearson space</em>:
+      </p>
+
+      <ul>
+        <li>
+          Amb F baixa i k baixa: <em>mitosi</em> — taques que es
+          divideixen com cèl·lules.
+        </li>
+        <li>
+          A la zona central: <em>solitons</em> — bombolles que es
+          desplacen pel medi com criatures petites.
+        </li>
+        <li>
+          Amb F mitjana: <em>coralls</em> — xarxes ramificades que
+          arrelen i s'expandeixen.
+        </li>
+        <li>
+          Cap a la franja superior: <em>estries i forats</em> —
+          laberints i orificis que pulsen.
+        </li>
+      </ul>
+
+      <p>
+        La peça que mires no es queda fixa en cap d'aquests règims.
+        F i k oscil·len amb freqüències incommensurables, fent un
+        viatge cuasi-periòdic per aquesta cartografia. Si la deixes
+        posada cinc minuts veuràs el medi travessar diversos
+        d'aquests règims. Un patró et naixerà davant, el seguirà un
+        altre, el contradirà un tercer. El petit punt al panell anirà
+        marcant el lloc.
+      </p>
+
+      <h3>La memòria del medi</h3>
+
+      <p>
+        Hi ha una capa addicional, més subtil. Cada punt del medi
+        recorda quanta perturbació ha rebut recentment.
+      </p>
+
+      <p>
+        Quan toques insistentment una mateixa zona, una variable
+        local — l'anomenem <em>saturació</em> — s'hi acumula. I
+        aquesta saturació modula els paràmetres físics del lloc: F i
+        k s'inclinen cap a una regió on el patró deixa de canviar.
+        La zona es congela. Si hi continues, ja no et respon: la pots
+        veure tornar-se freda i grisa.
+      </p>
+
+      <p>
+        Si la deixes en pau uns segons, la saturació decau. La
+        sensibilitat local es recupera. Pots tornar-hi i el medi
+        tornarà a respondre amb vivesa.
+      </p>
+
+      <p>
+        És un detall menor — un altre acord sobre la mateixa pintura
+        — però és el que fa que la peça no sigui només una
+        contemplació passiva. El que tu has fet en un lloc deixa una
+        empremta en la manera com aquell lloc pot ser-te significatiu
+        després.
+      </p>
+
+      <h3>Una nota personal</h3>
+
+      <p>
+        Aquesta peça acompanya un treball acadèmic que defensa una
+        idea estreta — que les nostres capacitats de sentir i de
+        pensar no són dues facultats separades, sinó dues cares de
+        la mateixa estructura processual. La peça no és una
+        il·lustració del treball. El treball és essencialment
+        conceptual i el medi de la peça és pràcticament purament
+        estètic. La relació entre tots dos és, intencionalment, més
+        obliqua.
+      </p>
+
+      <p>
+        Però el lector que hagi seguit fins aquí potser hi reconeix
+        una intuïció comuna. La forma que veus en pantalla no està
+        continguda enlloc. No hi ha un patró "real" del qual el que
+        veus en sigui una còpia. El patró és el resultat —local i
+        instantani— d'una història de relacions entre punts d'un
+        medi. I aquest medi té memòria; una memòria que modula com
+        respondrà a la trobada següent.
+      </p>
+
+      <p>
+        Si això s'assembla a alguna cosa del que el treball diu sobre
+        els éssers vius, és simplement perquè aquesta classe de
+        matemàtica i aquella altra de filosofia descriuen, des de
+        costats molt diferents, una estructura comuna del món: la de
+        coses que es fan al fer-se.
+      </p>
+    </article>
+
+    <footer>
+      <p>
+        Martí Recalde Tarrón · TFG
+        <em>Sensibilitat i intel·ligència</em> · Filosofia UB · curs
+        2025–2026
+      </p>
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

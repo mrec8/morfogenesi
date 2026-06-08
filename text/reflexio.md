@@ -1,0 +1,11 @@
+# Susceptibilitat — un paramecio i el seu medi
+
+El que mires és una cèl·lula — un paramecio. No té sistema nerviós. No té res que es pugui anomenar cervell. Però el veus moure's amb determinació, batre els cilis, contraure les vacuoles, recórrer el seu medi. Aquest medi és aquós i ple de coses: solutos que el rodegen i que, en variar localment, el suscíten.
+
+Quan injectes un soluto al medi, observes el seu comportament químic-tàctic, la **quimiotaxi**: cerca els solutos atractius i evita els repulsius. Quan troba un gradient hostil, executa el que els biòlegs anomenen el **reflex de Jennings**: atura, retrocedeix, gira un angle a l'atzar i reprèn la marxa. No delibera. No calcula. *Es comporta.*
+
+I tanmateix la seva resposta no és estàtica. Si insisteixes en un mateix soluto, el paramecio s'hi **habitua**: la seva sensibilitat per aquesta substància baixa. El pots saturar de glucosa fins que deixi de fer-li cas. Però llavors, si li introdueixes un soluto diferent — àcid, sal —, hi reaccionarà amb vivacitat. La pluralitat dels seus receptors, modulada per la història recent del medi, decideix a què és susceptible *ara*. Aquesta és la **detecció privativa d'estímuls**: el que la cèl·lula sentirà en el proper instant està ja sent determinat, ara mateix, com a part de la seva resposta al present.
+
+La idea contra la qual aquesta peça pensa és la imatge funcionalista de la **transducció sensorial pura**: la divisió, que retrobem en Dennett, entre un primer moment d'entrada d'informació i un segon moment de processament. Mira el paramecio i adona-te'n: aquesta divisió és impossible. No hi ha entrada neutra. La configuració dels seus receptors en aquest instant — quins estan adaptats, quins reposen — és el resultat de la seva història amb el medi. I aquesta història és el que decidirà *com* rebrà el proper estímul. La cèl·lula arriba a cada suscitació ja configurada per ella.
+
+El paramecio és un dels exemples que el TFG cita explícitament per defensar el seu gradualisme: hi ha vida sense sistema nerviós que ja exhibeix conducta orientada al manteniment vital. Aquí veus per què la divisió clàssica entre sensibilitat i intel·ligència no aguanta: una cèl·lula sense neurones ja *discrimina*, ja *recorda*, ja *decideix* en algun sentit. No són dues facultats separades. Una mateixa estructura processual ho produeix tot.
